@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PAS_LogsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PAS_Kit_ID_Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID-Closed" Type="nvarchar(max)" />
+    <Property Name="Date Closed" Type="nvarchar(max)" />
+    <Property Name="Planning" Type="nvarchar(max)" />
+    <Property Name="Date Rec'd" Type="nvarchar(max)" />
+    <Property Name="Date Picked" Type="nvarchar(max)" />
+    <Property Name="Date CTB" Type="nvarchar(max)" />
+    <Property Name="Date Wip" Type="nvarchar(max)" />
+    <Property Name="Pick By Date" Type="nvarchar(max)" />
+    <Property Name="Date" Type="nvarchar(max)" />
+    <Property Name="Customer" Type="nvarchar(max)" />
+    <Property Name="Assy No" Type="nvarchar(max)" />
+    <Property Name="Rev" Type="nvarchar(max)" />
+    <Property Name="Stk Code" Type="nvarchar(max)" />
+    <Property Name="Qty" Type="nvarchar(max)" />
+    <Property Name="Kit ID" Type="nvarchar(max)" />
+    <Property Name="Date Due" Type="nvarchar(max)" />
+    <Property Name="Cust PO" Type="nvarchar(max)" />
+    <Property Name="Rohs" Type="nvarchar(max)" />
+    <Property Name="QA Spec" Type="nvarchar(max)" />
+    <Property Name="Proc Code" Type="nvarchar(max)" />
+    <Property Name="Due Notes" Type="nvarchar(max)" />
+    <Property Name="Job Notes" Type="nvarchar(max)" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+    <Property Name="Out" Type="nvarchar(max)" />
+    <Property Name="Fill" Type="nvarchar(max)" />
+    <Property Name="ID-2B-Closed Kit ID" Type="nvarchar(max)" />
+    <Property Name="ID-2B-Closed Query" Type="nvarchar(max)" />
+    <Property Name="Srt-X" Type="nvarchar(max)" />
+    <Property Name="CK" Type="nvarchar(max)" />
+    <Property Name="Mod Kit" Type="nvarchar(max)" />
+    <Property Name="O vs Z" Type="nvarchar(max)" />
+    <Property Name="DUP" Type="nvarchar(max)" />
+    <Property Name="Fill Check" Type="nvarchar(max)" />
+    <Property Name="F-CK" Type="nvarchar(max)" />
+    <Property Name="L3 - SF Mobile-Vision Changes" Type="nvarchar(max)" />
+  </EntityType>
+  <Function Name="FindKitID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="KitID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="InsertStart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="assembly" Type="nvarchar" Mode="In" />
+    <Parameter Name="rev" Type="nvarchar" Mode="In" />
+    <Parameter Name="partno" Type="nvarchar" Mode="In" />
+    <Parameter Name="ref" Type="nvarchar" Mode="In" />
+    <Parameter Name="operator" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="SP_Check_SN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="SP_CustomerAssembly" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="customer" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Generate_Report_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="customer" Type="nvarchar" Mode="In" />
+    <Parameter Name="assembly" Type="nvarchar" Mode="In" />
+    <Parameter Name="revision" Type="nvarchar" Mode="In" />
+    <Parameter Name="id_kit_id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="SP_Get_Assembly" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="customer" Type="nvarchar" Mode="In" />
+    <Parameter Name="operation" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_Get_Camera_Log" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_Get_Customers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="operation" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_Get_Kit_IDs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_Get_Kit_Info" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="SP_Get_Kit_Info_Old" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="SP_Get_Kit_Info2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="SP_Get_Reprinted_SN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="SP_Get_Revision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="customer" Type="nvarchar" Mode="In" />
+    <Parameter Name="assembly" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_Get_SN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Insert_Reprinted_SN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_Insert_Serial_Numbers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="sn" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_Insert_SN_Range" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="date_" Type="datetime" Mode="In" />
+    <Parameter Name="kit_id" Type="varchar" Mode="In" />
+    <Parameter Name="qty" Type="int" Mode="In" />
+    <Parameter Name="sn_start" Type="varchar" Mode="In" />
+    <Parameter Name="sn_finish" Type="varchar" Mode="In" />
+    <Parameter Name="week" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_Next_Serial_Number" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="week" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_Serial_Num_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateEndTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="assembly" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="PAS_LogsModelStoreContainer">
+    <EntitySet Name="PAS_Kit_ID_Log" EntityType="Self.PAS_Kit_ID_Log" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

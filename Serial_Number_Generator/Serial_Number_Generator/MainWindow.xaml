@@ -1,0 +1,27 @@
+﻿<Window x:Class="Serial_Number_Generator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Serial_Number_Generator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="Options_Label" Content="Options" HorizontalAlignment="Left" Margin="70,66,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" />
+        <CheckBox x:Name="Tin_Lead_Checkbox" Content="TIN LEAD" HorizontalAlignment="Left" Margin="87,106,0,0" VerticalAlignment="Top" Height="15" />
+        <CheckBox x:Name="No_Clean_Checkbox" Content="NO CLEAN" HorizontalAlignment="Left" Margin="87,146,0,0" VerticalAlignment="Top" Height="15" />
+        <CheckBox x:Name="Lead_Free_Checkbox" Content="LEAD FREE" HorizontalAlignment="Left" Margin="87,126,0,0" VerticalAlignment="Top" Height="15" />
+        <CheckBox x:Name="Halogen_Free_Checkbox" Content="HALOGEN FREE" HorizontalAlignment="Left" Margin="87,166,0,0" VerticalAlignment="Top" Height="15" />
+        <CheckBox x:Name="Conformal_Coated_Checkbox" Content="CONFORMAL COATED" HorizontalAlignment="Left" Margin="87,186,0,0" VerticalAlignment="Top" Height="15" />
+        <CheckBox x:Name="Class_3" Content="CLASS 3" HorizontalAlignment="Left" Margin="87,206,0,0" VerticalAlignment="Top" Height="15" />
+        <Label x:Name="Traveler_Info_Label_Copy" Content="TRAVELER INFORMATION" HorizontalAlignment="Left" Margin="393,53,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" />
+
+        <ComboBox x:Name="Kit_ID_Combobox" HorizontalAlignment="Left" Margin="423,102,0,0" VerticalAlignment="Top" Width="151" Height="29" DisplayMemberPath="Kit ID" SelectedValuePath="ID" RenderTransformOrigin="0.5,1">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+    </Grid>
+</Window>

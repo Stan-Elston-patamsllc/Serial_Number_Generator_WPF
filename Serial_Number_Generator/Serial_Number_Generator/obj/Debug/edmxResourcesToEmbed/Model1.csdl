@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PAS_LogsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PAS_Kit_ID_Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ID_Closed" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Closed" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Planning" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Rec_d" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Picked" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date_CTB" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Wip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pick_By_Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Customer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Assy_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Rev" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Stk_Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Qty" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Kit_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Due" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cust_PO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Rohs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="QA_Spec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Proc_Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Due_Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Job_Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Out" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Fill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ID_2B_Closed_Kit_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ID_2B_Closed_Query" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Srt_X" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CK" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Mod_Kit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="O_vs_Z" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DUP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Fill_Check" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="F_CK" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="L3___SF_Mobile_Vision_Changes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="PAS_LogsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PAS_Kit_ID_Log" EntityType="Self.PAS_Kit_ID_Log" />
+    <FunctionImport Name="FindKitID" ReturnType="Collection(PAS_LogsModel.FindKitID_Result)">
+      <Parameter Name="KitID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertStart">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="assembly" Mode="In" Type="String" />
+      <Parameter Name="rev" Mode="In" Type="String" />
+      <Parameter Name="partno" Mode="In" Type="String" />
+      <Parameter Name="ref" Mode="In" Type="String" />
+      <Parameter Name="operator" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Check_SN" ReturnType="Collection(Int32)">
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CustomerAssembly" ReturnType="Collection(String)">
+      <Parameter Name="customer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Generate_Report_Data" ReturnType="Collection(PAS_LogsModel.SP_Generate_Report_Data_Result)">
+      <Parameter Name="customer" Mode="In" Type="String" />
+      <Parameter Name="assembly" Mode="In" Type="String" />
+      <Parameter Name="revision" Mode="In" Type="String" />
+      <Parameter Name="id_kit_id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Get_Assembly" ReturnType="Collection(PAS_LogsModel.SP_Get_Assembly_Result)">
+      <Parameter Name="customer" Mode="In" Type="String" />
+      <Parameter Name="operation" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Get_Camera_Log" ReturnType="Collection(PAS_LogsModel.SP_Get_Camera_Log_Result)" />
+    <FunctionImport Name="SP_Get_Customers" ReturnType="Collection(PAS_LogsModel.SP_Get_Customers_Result)">
+      <Parameter Name="operation" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Get_Kit_IDs" ReturnType="Collection(PAS_LogsModel.SP_Get_Kit_IDs_Result)" />
+    <FunctionImport Name="SP_Get_Kit_Info" ReturnType="Collection(PAS_LogsModel.SP_Get_Kit_Info_Result)">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Get_Kit_Info_Old" ReturnType="Collection(PAS_LogsModel.SP_Get_Kit_Info_Old_Result)">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Get_Kit_Info2" ReturnType="Collection(PAS_LogsModel.SP_Get_Kit_Info2_Result)">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Get_Reprinted_SN" ReturnType="Collection(PAS_LogsModel.SP_Get_Reprinted_SN_Result)">
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Get_Revision" ReturnType="Collection(PAS_LogsModel.SP_Get_Revision_Result)">
+      <Parameter Name="customer" Mode="In" Type="String" />
+      <Parameter Name="assembly" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Get_SN" ReturnType="Collection(PAS_LogsModel.SP_Get_SN_Result)">
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PAS_LogsModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PAS_LogsModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Insert_Reprinted_SN" />
+    <FunctionImport Name="SP_Insert_Serial_Numbers">
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+      <Parameter Name="sn" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Insert_SN_Range">
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+      <Parameter Name="date_" Mode="In" Type="DateTime" />
+      <Parameter Name="kit_id" Mode="In" Type="String" />
+      <Parameter Name="qty" Mode="In" Type="Int32" />
+      <Parameter Name="sn_start" Mode="In" Type="String" />
+      <Parameter Name="sn_finish" Mode="In" Type="String" />
+      <Parameter Name="week" Mode="In" Type="String" />
+      <Parameter Name="customer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Next_Serial_Number" ReturnType="Collection(PAS_LogsModel.SP_Next_Serial_Number_Result)">
+      <Parameter Name="week" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Serial_Num_Count" ReturnType="Collection(PAS_LogsModel.SP_Serial_Num_Count_Result)">
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="test" ReturnType="Collection(PAS_LogsModel.test_Result)" />
+    <FunctionImport Name="UpdateEndTime">
+      <Parameter Name="id" Mode="In" Type="Guid" />
+      <Parameter Name="assembly" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="FindKitID_Result">
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Serial_Number" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="SP_Generate_Report_Data_Result">
+    <Property Type="String" Name="Customer" Nullable="true" />
+    <Property Type="String" Name="Assy_No" Nullable="true" />
+    <Property Type="String" Name="Rev" Nullable="true" />
+    <Property Type="Guid" Name="ID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_Get_Assembly_Result">
+    <Property Type="String" Name="Assy_No" Nullable="true" />
+    <Property Type="String" Name="Customer" Nullable="true" />
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="Guid" Name="ID_Kit_ID" Nullable="false" />
+    <Property Type="Guid" Name="ID_Operation" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Get_Camera_Log_Result">
+    <Property Type="DateTime" Name="DATE" Nullable="true" Precision="23" />
+    <Property Type="String" Name="KIT_ID" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Camera_SN" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Board_SN" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="PASSED" Nullable="true" />
+    <Property Type="Boolean" Name="FAILED" Nullable="true" />
+    <Property Type="String" Name="OPERATOR" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NOTES" Nullable="true" MaxLength="800" />
+  </ComplexType>
+  <ComplexType Name="SP_Get_Customers_Result">
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Customer" Nullable="true" />
+    <Property Type="Guid" Name="ID_Kit_ID" Nullable="false" />
+    <Property Type="Guid" Name="ID_Operation" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Get_Kit_IDs_Result">
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Customer" Nullable="true" />
+    <Property Type="String" Name="Assy_No" Nullable="true" />
+    <Property Type="String" Name="Rev" Nullable="true" />
+    <Property Type="String" Name="Qty" Nullable="true" />
+    <Property Type="String" Name="Kit_ID" Nullable="true" />
+    <Property Type="String" Name="Rohs" Nullable="true" />
+    <Property Type="String" Name="QA_Spec" Nullable="true" />
+    <Property Type="String" Name="Proc_Code" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Get_Kit_Info_Result">
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Customer" Nullable="true" />
+    <Property Type="String" Name="Assy_No" Nullable="true" />
+    <Property Type="String" Name="Rev" Nullable="true" />
+    <Property Type="String" Name="Stk_Code" Nullable="true" />
+    <Property Type="String" Name="Qty" Nullable="true" />
+    <Property Type="String" Name="Kit_ID" Nullable="true" />
+    <Property Type="String" Name="Cust_PO" Nullable="true" />
+    <Property Type="String" Name="Rohs" Nullable="true" />
+    <Property Type="String" Name="QA_Spec" Nullable="true" />
+    <Property Type="String" Name="Proc_Code" Nullable="true" />
+    <Property Type="String" Name="Due_Notes" Nullable="true" />
+    <Property Type="String" Name="Job_Notes" Nullable="true" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Get_Kit_Info_Old_Result">
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Customer" Nullable="true" />
+    <Property Type="String" Name="Assy_No" Nullable="true" />
+    <Property Type="String" Name="Rev" Nullable="true" />
+    <Property Type="String" Name="Stk_Code" Nullable="true" />
+    <Property Type="String" Name="Qty" Nullable="true" />
+    <Property Type="String" Name="Kit_ID" Nullable="true" />
+    <Property Type="String" Name="Cust_PO" Nullable="true" />
+    <Property Type="String" Name="Rohs" Nullable="true" />
+    <Property Type="String" Name="QA_Spec" Nullable="true" />
+    <Property Type="String" Name="Proc_Code" Nullable="true" />
+    <Property Type="String" Name="Due_Notes" Nullable="true" />
+    <Property Type="String" Name="Job_Notes" Nullable="true" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Get_Kit_Info2_Result">
+    <Property Type="Guid" Name="ID" Nullable="true" />
+    <Property Type="String" Name="Customer" Nullable="true" />
+    <Property Type="String" Name="Assembly_No" Nullable="true" />
+    <Property Type="String" Name="Rev" Nullable="true" />
+    <Property Type="String" Name="Qty" Nullable="true" />
+    <Property Type="String" Name="Kit_ID" Nullable="true" />
+    <Property Type="String" Name="PO_Ref" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Get_Reprinted_SN_Result">
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="Guid" Name="Serial_ID" Nullable="false" />
+    <Property Type="String" Name="Serial_Number" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="SP_Get_Revision_Result">
+    <Property Type="String" Name="Assy_No" Nullable="true" />
+    <Property Type="String" Name="Customer" Nullable="true" />
+    <Property Type="String" Name="Rev" Nullable="true" />
+    <Property Type="Guid" Name="ID_Kit_ID" Nullable="true" />
+    <Property Type="Guid" Name="ID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Get_SN_Result">
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Kit_ID" Nullable="false" MaxLength="14" />
+    <Property Type="Int32" Name="QTY" Nullable="false" />
+    <Property Type="String" Name="SN_Start" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SN_Finish" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Week" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="Customer" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_Next_Serial_Number_Result">
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Kit_ID" Nullable="false" MaxLength="14" />
+    <Property Type="Int32" Name="QTY" Nullable="false" />
+    <Property Type="String" Name="SN_Start" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SN_Finish" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Week" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="Customer" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="SP_Serial_Num_Count_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="String" Name="Qty" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="test_Result">
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ID_Closed" Nullable="true" />
+    <Property Type="String" Name="Date_Closed" Nullable="true" />
+    <Property Type="String" Name="Planning" Nullable="true" />
+    <Property Type="String" Name="Date_Rec_d" Nullable="true" />
+    <Property Type="String" Name="Date_Picked" Nullable="true" />
+    <Property Type="String" Name="Date_CTB" Nullable="true" />
+    <Property Type="String" Name="Date_Wip" Nullable="true" />
+    <Property Type="String" Name="Pick_By_Date" Nullable="true" />
+    <Property Type="String" Name="Date" Nullable="true" />
+    <Property Type="String" Name="Customer" Nullable="true" />
+    <Property Type="String" Name="Assy_No" Nullable="true" />
+    <Property Type="String" Name="Rev" Nullable="true" />
+    <Property Type="String" Name="Stk_Code" Nullable="true" />
+    <Property Type="String" Name="Qty" Nullable="true" />
+    <Property Type="String" Name="Kit_ID" Nullable="true" />
+    <Property Type="String" Name="Date_Due" Nullable="true" />
+    <Property Type="String" Name="Cust_PO" Nullable="true" />
+    <Property Type="String" Name="Rohs" Nullable="true" />
+    <Property Type="String" Name="QA_Spec" Nullable="true" />
+    <Property Type="String" Name="Proc_Code" Nullable="true" />
+    <Property Type="String" Name="Due_Notes" Nullable="true" />
+    <Property Type="String" Name="Job_Notes" Nullable="true" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+    <Property Type="String" Name="Out" Nullable="true" />
+    <Property Type="String" Name="Fill" Nullable="true" />
+    <Property Type="String" Name="ID_2B_Closed_Kit_ID" Nullable="true" />
+    <Property Type="String" Name="ID_2B_Closed_Query" Nullable="true" />
+    <Property Type="String" Name="Srt_X" Nullable="true" />
+    <Property Type="String" Name="CK" Nullable="true" />
+    <Property Type="String" Name="Mod_Kit" Nullable="true" />
+    <Property Type="String" Name="O_vs_Z" Nullable="true" />
+    <Property Type="String" Name="DUP" Nullable="true" />
+    <Property Type="String" Name="Fill_Check" Nullable="true" />
+    <Property Type="String" Name="F_CK" Nullable="true" />
+    <Property Type="String" Name="L3___SF_Mobile_Vision_Changes" Nullable="true" />
+    <Property Type="Guid" Name="ID1" Nullable="false" />
+    <Property Type="Guid" Name="Serial_ID" Nullable="false" />
+    <Property Type="String" Name="Serial_Number" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="Date1" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="Trav_Printed" Nullable="true" />
+    <Property Type="Boolean" Name="SN_Label_Printed" Nullable="true" />
+  </ComplexType>
+</Schema>

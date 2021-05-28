@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PAS_LogsModelStoreContainer" CdmEntityContainer="PAS_LogsEntities">
+    <EntitySetMapping Name="PAS_Kit_ID_Log">
+      <EntityTypeMapping TypeName="PAS_LogsModel.PAS_Kit_ID_Log">
+        <MappingFragment StoreEntitySet="PAS_Kit_ID_Log">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Closed" ColumnName="ID-Closed" />
+          <ScalarProperty Name="Date_Closed" ColumnName="Date Closed" />
+          <ScalarProperty Name="Planning" ColumnName="Planning" />
+          <ScalarProperty Name="Date_Rec_d" ColumnName="Date Rec'd" />
+          <ScalarProperty Name="Date_Picked" ColumnName="Date Picked" />
+          <ScalarProperty Name="Date_CTB" ColumnName="Date CTB" />
+          <ScalarProperty Name="Date_Wip" ColumnName="Date Wip" />
+          <ScalarProperty Name="Pick_By_Date" ColumnName="Pick By Date" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Assy_No" ColumnName="Assy No" />
+          <ScalarProperty Name="Rev" ColumnName="Rev" />
+          <ScalarProperty Name="Stk_Code" ColumnName="Stk Code" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Kit_ID" ColumnName="Kit ID" />
+          <ScalarProperty Name="Date_Due" ColumnName="Date Due" />
+          <ScalarProperty Name="Cust_PO" ColumnName="Cust PO" />
+          <ScalarProperty Name="Rohs" ColumnName="Rohs" />
+          <ScalarProperty Name="QA_Spec" ColumnName="QA Spec" />
+          <ScalarProperty Name="Proc_Code" ColumnName="Proc Code" />
+          <ScalarProperty Name="Due_Notes" ColumnName="Due Notes" />
+          <ScalarProperty Name="Job_Notes" ColumnName="Job Notes" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Out" ColumnName="Out" />
+          <ScalarProperty Name="Fill" ColumnName="Fill" />
+          <ScalarProperty Name="ID_2B_Closed_Kit_ID" ColumnName="ID-2B-Closed Kit ID" />
+          <ScalarProperty Name="ID_2B_Closed_Query" ColumnName="ID-2B-Closed Query" />
+          <ScalarProperty Name="Srt_X" ColumnName="Srt-X" />
+          <ScalarProperty Name="CK" ColumnName="CK" />
+          <ScalarProperty Name="Mod_Kit" ColumnName="Mod Kit" />
+          <ScalarProperty Name="O_vs_Z" ColumnName="O vs Z" />
+          <ScalarProperty Name="DUP" ColumnName="DUP" />
+          <ScalarProperty Name="Fill_Check" ColumnName="Fill Check" />
+          <ScalarProperty Name="F_CK" ColumnName="F-CK" />
+          <ScalarProperty Name="L3___SF_Mobile_Vision_Changes" ColumnName="L3 - SF Mobile-Vision Changes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="FindKitID" FunctionName="PAS_LogsModel.Store.FindKitID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.FindKitID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Serial_Number" ColumnName="Serial_Number" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InsertStart" FunctionName="PAS_LogsModel.Store.InsertStart" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PAS_LogsModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="SP_Check_SN" FunctionName="PAS_LogsModel.Store.SP_Check_SN" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PAS_LogsModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="SP_CustomerAssembly" FunctionName="PAS_LogsModel.Store.SP_CustomerAssembly" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PAS_LogsModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="SP_Generate_Report_Data" FunctionName="PAS_LogsModel.Store.SP_Generate_Report_Data">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Generate_Report_Data_Result">
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Assy_No" ColumnName="Assy No" />
+          <ScalarProperty Name="Rev" ColumnName="Rev" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Get_Assembly" FunctionName="PAS_LogsModel.Store.SP_Get_Assembly">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Get_Assembly_Result">
+          <ScalarProperty Name="Assy_No" ColumnName="Assy No" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Kit_ID" ColumnName="ID_Kit_ID" />
+          <ScalarProperty Name="ID_Operation" ColumnName="ID_Operation" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Get_Camera_Log" FunctionName="PAS_LogsModel.Store.SP_Get_Camera_Log">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Get_Camera_Log_Result">
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="KIT_ID" ColumnName="KIT_ID" />
+          <ScalarProperty Name="Camera_SN" ColumnName="Camera_SN" />
+          <ScalarProperty Name="Board_SN" ColumnName="Board_SN" />
+          <ScalarProperty Name="PASSED" ColumnName="PASSED" />
+          <ScalarProperty Name="FAILED" ColumnName="FAILED" />
+          <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
+          <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Get_Customers" FunctionName="PAS_LogsModel.Store.SP_Get_Customers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Get_Customers_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="ID_Kit_ID" ColumnName="ID_Kit_ID" />
+          <ScalarProperty Name="ID_Operation" ColumnName="ID_Operation" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Get_Kit_IDs" FunctionName="PAS_LogsModel.Store.SP_Get_Kit_IDs">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Get_Kit_IDs_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Assy_No" ColumnName="Assy No" />
+          <ScalarProperty Name="Rev" ColumnName="Rev" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Kit_ID" ColumnName="Kit ID" />
+          <ScalarProperty Name="Rohs" ColumnName="Rohs" />
+          <ScalarProperty Name="QA_Spec" ColumnName="QA Spec" />
+          <ScalarProperty Name="Proc_Code" ColumnName="Proc Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Get_Kit_Info" FunctionName="PAS_LogsModel.Store.SP_Get_Kit_Info">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Get_Kit_Info_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Assy_No" ColumnName="Assy No" />
+          <ScalarProperty Name="Rev" ColumnName="Rev" />
+          <ScalarProperty Name="Stk_Code" ColumnName="Stk Code" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Kit_ID" ColumnName="Kit ID" />
+          <ScalarProperty Name="Cust_PO" ColumnName="Cust PO" />
+          <ScalarProperty Name="Rohs" ColumnName="Rohs" />
+          <ScalarProperty Name="QA_Spec" ColumnName="QA Spec" />
+          <ScalarProperty Name="Proc_Code" ColumnName="Proc Code" />
+          <ScalarProperty Name="Due_Notes" ColumnName="Due Notes" />
+          <ScalarProperty Name="Job_Notes" ColumnName="Job Notes" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Get_Kit_Info_Old" FunctionName="PAS_LogsModel.Store.SP_Get_Kit_Info_Old">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Get_Kit_Info_Old_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Assy_No" ColumnName="Assy No" />
+          <ScalarProperty Name="Rev" ColumnName="Rev" />
+          <ScalarProperty Name="Stk_Code" ColumnName="Stk Code" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Kit_ID" ColumnName="Kit ID" />
+          <ScalarProperty Name="Cust_PO" ColumnName="Cust PO" />
+          <ScalarProperty Name="Rohs" ColumnName="Rohs" />
+          <ScalarProperty Name="QA_Spec" ColumnName="QA Spec" />
+          <ScalarProperty Name="Proc_Code" ColumnName="Proc Code" />
+          <ScalarProperty Name="Due_Notes" ColumnName="Due Notes" />
+          <ScalarProperty Name="Job_Notes" ColumnName="Job Notes" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Get_Kit_Info2" FunctionName="PAS_LogsModel.Store.SP_Get_Kit_Info2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Get_Kit_Info2_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Assembly_No" ColumnName="Assembly No" />
+          <ScalarProperty Name="Rev" ColumnName="Rev" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Kit_ID" ColumnName="Kit ID" />
+          <ScalarProperty Name="PO_Ref" ColumnName="PO_Ref" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Get_Reprinted_SN" FunctionName="PAS_LogsModel.Store.SP_Get_Reprinted_SN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Get_Reprinted_SN_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Serial_ID" ColumnName="Serial_ID" />
+          <ScalarProperty Name="Serial_Number" ColumnName="Serial_Number" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Get_Revision" FunctionName="PAS_LogsModel.Store.SP_Get_Revision">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Get_Revision_Result">
+          <ScalarProperty Name="Assy_No" ColumnName="Assy No" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Rev" ColumnName="Rev" />
+          <ScalarProperty Name="ID_Kit_ID" ColumnName="ID_Kit_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Get_SN" FunctionName="PAS_LogsModel.Store.SP_Get_SN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Get_SN_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Kit_ID" ColumnName="Kit_ID" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="SN_Start" ColumnName="SN_Start" />
+          <ScalarProperty Name="SN_Finish" ColumnName="SN_Finish" />
+          <ScalarProperty Name="Week" ColumnName="Week" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PAS_LogsModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PAS_LogsModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Insert_Reprinted_SN" FunctionName="PAS_LogsModel.Store.SP_Insert_Reprinted_SN" />
+    <FunctionImportMapping FunctionImportName="SP_Insert_Serial_Numbers" FunctionName="PAS_LogsModel.Store.SP_Insert_Serial_Numbers" />
+    <FunctionImportMapping FunctionImportName="SP_Insert_SN_Range" FunctionName="PAS_LogsModel.Store.SP_Insert_SN_Range" />
+    <FunctionImportMapping FunctionImportName="SP_Next_Serial_Number" FunctionName="PAS_LogsModel.Store.SP_Next_Serial_Number">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Next_Serial_Number_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Kit_ID" ColumnName="Kit_ID" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="SN_Start" ColumnName="SN_Start" />
+          <ScalarProperty Name="SN_Finish" ColumnName="SN_Finish" />
+          <ScalarProperty Name="Week" ColumnName="Week" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PAS_LogsModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="SP_Serial_Num_Count" FunctionName="PAS_LogsModel.Store.SP_Serial_Num_Count">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.SP_Serial_Num_Count_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PAS_LogsModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="test" FunctionName="PAS_LogsModel.Store.test">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PAS_LogsModel.test_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Closed" ColumnName="ID-Closed" />
+          <ScalarProperty Name="Date_Closed" ColumnName="Date Closed" />
+          <ScalarProperty Name="Planning" ColumnName="Planning" />
+          <ScalarProperty Name="Date_Rec_d" ColumnName="Date Rec'd" />
+          <ScalarProperty Name="Date_Picked" ColumnName="Date Picked" />
+          <ScalarProperty Name="Date_CTB" ColumnName="Date CTB" />
+          <ScalarProperty Name="Date_Wip" ColumnName="Date Wip" />
+          <ScalarProperty Name="Pick_By_Date" ColumnName="Pick By Date" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Assy_No" ColumnName="Assy No" />
+          <ScalarProperty Name="Rev" ColumnName="Rev" />
+          <ScalarProperty Name="Stk_Code" ColumnName="Stk Code" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Kit_ID" ColumnName="Kit ID" />
+          <ScalarProperty Name="Date_Due" ColumnName="Date Due" />
+          <ScalarProperty Name="Cust_PO" ColumnName="Cust PO" />
+          <ScalarProperty Name="Rohs" ColumnName="Rohs" />
+          <ScalarProperty Name="QA_Spec" ColumnName="QA Spec" />
+          <ScalarProperty Name="Proc_Code" ColumnName="Proc Code" />
+          <ScalarProperty Name="Due_Notes" ColumnName="Due Notes" />
+          <ScalarProperty Name="Job_Notes" ColumnName="Job Notes" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Out" ColumnName="Out" />
+          <ScalarProperty Name="Fill" ColumnName="Fill" />
+          <ScalarProperty Name="ID_2B_Closed_Kit_ID" ColumnName="ID-2B-Closed Kit ID" />
+          <ScalarProperty Name="ID_2B_Closed_Query" ColumnName="ID-2B-Closed Query" />
+          <ScalarProperty Name="Srt_X" ColumnName="Srt-X" />
+          <ScalarProperty Name="CK" ColumnName="CK" />
+          <ScalarProperty Name="Mod_Kit" ColumnName="Mod Kit" />
+          <ScalarProperty Name="O_vs_Z" ColumnName="O vs Z" />
+          <ScalarProperty Name="DUP" ColumnName="DUP" />
+          <ScalarProperty Name="Fill_Check" ColumnName="Fill Check" />
+          <ScalarProperty Name="F_CK" ColumnName="F-CK" />
+          <ScalarProperty Name="L3___SF_Mobile_Vision_Changes" ColumnName="L3 - SF Mobile-Vision Changes" />
+          <ScalarProperty Name="ID1" ColumnName="ID1" />
+          <ScalarProperty Name="Serial_ID" ColumnName="Serial_ID" />
+          <ScalarProperty Name="Serial_Number" ColumnName="Serial_Number" />
+          <ScalarProperty Name="Date1" ColumnName="Date1" />
+          <ScalarProperty Name="Trav_Printed" ColumnName="Trav_Printed" />
+          <ScalarProperty Name="SN_Label_Printed" ColumnName="SN_Label_Printed" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateEndTime" FunctionName="PAS_LogsModel.Store.UpdateEndTime" />
+  </EntityContainerMapping>
+</Mapping>
