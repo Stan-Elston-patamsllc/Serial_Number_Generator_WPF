@@ -16,12 +16,29 @@
         <CheckBox x:Name="Class_3" Content="CLASS 3" HorizontalAlignment="Left" Margin="87,206,0,0" VerticalAlignment="Top" Height="15" />
         <Label x:Name="Traveler_Info_Label_Copy" Content="TRAVELER INFORMATION" HorizontalAlignment="Left" Margin="393,53,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" />
 
-        <ComboBox x:Name="Kit_ID_Combobox" HorizontalAlignment="Left" Margin="423,102,0,0" VerticalAlignment="Top" Width="151" Height="29" DisplayMemberPath="Kit ID" SelectedValuePath="ID" RenderTransformOrigin="0.5,1">
+        <ComboBox x:Name="Kit_ID_Combobox" HorizontalAlignment="Left" Margin="515,106,0,0" VerticalAlignment="Top" Width="105" Height="29" DisplayMemberPath="Kit ID" SelectedValuePath="ID" RenderTransformOrigin="0.5,1" SelectionChanged="Kit_ID_Combobox_SelectionChanged_1" IsEditable="True">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
+        <TextBox x:Name="Customer_Textbox" HorizontalAlignment="Left" Height="23" Margin="515,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" FontSize="16" />
+        <TextBox x:Name="Assembly_Textbox" HorizontalAlignment="Left" Height="23" Margin="515,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" FontSize="16" />
+        <TextBox x:Name="Rev_Textbox" HorizontalAlignment="Left" Height="23" Margin="515,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177"  FontSize="16" />
+        <Label Content="KIT ID" HorizontalAlignment="Left" Margin="460,106,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" RenderTransformOrigin="1.927,0.379" Height="29" />
+        <Label Content="CUSTOMER" HorizontalAlignment="Left" Margin="425,141,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.396,2.409" Height="29" />
+        <Label Content="ASSEMBLY" HorizontalAlignment="Left" Margin="430,169,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.396,2.409" Height="29" />
+        <Label x:Name="Rev" Content="Rev" HorizontalAlignment="Left" Margin="470,199,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.396,2.409" />
+        <RadioButton x:Name="PAS_Serial_Num_Radio_Button" Content="PAS Serial Number" HorizontalAlignment="Left" Margin="430,267,0,0" VerticalAlignment="Top" IsChecked="True" />
+        <RadioButton x:Name="Customer_Serial_Num_Radio_Button" Content="Customer Serial Number" HorizontalAlignment="Left" Margin="559,267,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="Customer_Textbox_Copy" HorizontalAlignment="Left" Height="23" Margin="414,306,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69" FontSize="16" />
+        <TextBox x:Name="Customer_Textbox_Copy1" HorizontalAlignment="Left" Height="23" Margin="652,306,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69" FontSize="16" />
+        <TextBox x:Name="Customer_Textbox_Copy2" HorizontalAlignment="Left" Height="23" Margin="521,306,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69" FontSize="16" />
+        <Label Content="Prefix" HorizontalAlignment="Left" Margin="360,303,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.396,2.409" Height="29" />
+        <Label Content="Suffix" HorizontalAlignment="Left" Margin="598,303,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.396,2.409" Height="29" />
+        <Label Content="SN" HorizontalAlignment="Left" Margin="488,303,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.396,2.409" Height="29" />
+        <TextBox x:Name="Pur_Order_Textbox" HorizontalAlignment="Left" Height="23" Margin="515,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177"  FontSize="16" />
+        <Label Content="PURCHASE ORDER #" HorizontalAlignment="Left" Margin="365,228,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.396,2.409" />
     </Grid>
 </Window>
