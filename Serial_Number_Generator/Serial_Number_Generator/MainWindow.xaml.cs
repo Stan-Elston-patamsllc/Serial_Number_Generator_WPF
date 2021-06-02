@@ -25,6 +25,7 @@ namespace Serial_Number_Generator
         // Stored Procedures
         public const string GET_KIT_IDS = "SP_Get_Kit_IDs";
 
+        private const string INSERT_SN_RANGE = "SP_Insert_SN_Range";
         private const string GET_KIT_INFO = "SP_Get_Kit_Info";
         private const string CHECK_SN = "SP_Check_SN";
 
@@ -53,6 +54,7 @@ namespace Serial_Number_Generator
         {
             InitializeComponent();
             FillComboBox();
+            PAS_Serial_Num_Radio_Button.IsChecked = true;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,81 +71,103 @@ namespace Serial_Number_Generator
 
         private void Kit_ID_Combobox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            if (Kit_ID_Combobox.Text != "")
+            SN_Data.Kit_ID = Kit_ID_Combobox.SelectedValue.ToString();
+
+            // Create Dictionary
+            Dictionary<string, object> Sql_Parameters = new Dictionary<string, object>();
+
+            // Add SQL Parameters Below
+            Sql_Parameters.Add("@id", Kit_ID_Combobox.SelectedValue.ToString());
+
+            Sql_Query query = new Sql_Query();
+            DataTable dataTable = query.Sql_Select(SQL_CONNECTION, GET_KIT_INFO, Sql_Parameters);
+
+            foreach (DataRow row in dataTable.Rows)
             {
-                SN_Data.Kit_ID = Kit_ID_Combobox.SelectedValue.ToString();
-
-                // Create Dictionary
-                Dictionary<string, object> Sql_Parameters = new Dictionary<string, object>();
-
-                // Add SQL Parameters Below
-                Sql_Parameters.Add("@id", Kit_ID_Combobox.SelectedValue.ToString());
-
-                Sql_Query query = new Sql_Query();
-                DataTable dataTable = query.Sql_Select(SQL_CONNECTION, GET_KIT_INFO, Sql_Parameters);
-
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    MainWindow checkboxes = new MainWindow
+                MainWindow checkboxes = new MainWindow
 ();
-                    Set_Checkboxes(row[PROC_CODE].ToString());
+                Set_Checkboxes(row[PROC_CODE].ToString());
 
-                    SN_Data.Customer = row[CUSTOMER_COLUMN].ToString();
-                    SN_Data.Assembly = row[ASSY_NUM_COLUMN].ToString();
+                SN_Data.Customer = row[CUSTOMER_COLUMN].ToString();
+                SN_Data.Assembly = row[ASSY_NUM_COLUMN].ToString();
+
+                SN_Data.PO = row[CUSTOMER_PO_COLUMN].ToString();
+                SN_Data.ID = Guid.Parse(row[ID_COLUMN].ToString());
+
+                if (row[REV_COLUMN].ToString() == "")
+                {
+                    SN_Data.Rev = "-";
+                }
+                else
+                {
                     SN_Data.Rev = row[REV_COLUMN].ToString();
-                    SN_Data.PO = row[CUSTOMER_PO_COLUMN].ToString();
-                    SN_Data.ID = Guid.Parse(row[ID_COLUMN].ToString());
-
-                    try
-                    {
-                        SN_Data.QTY = int.Parse(row[QTY_COLUMN].ToString());
-                    }
-                    catch
-                    {
-                        SN_Data.QTY = 1;
-                    }
                 }
 
-                Customer_Textbox.Text = SN_Data.Customer;
-                Assembly_Textbox.Text = SN_Data.Assembly;
-                Rev_Textbox.Text = SN_Data.Rev;
-                Pur_Order_Textbox.Text = SN_Data.PO;
+                try
+                {
+                    SN_Data.QTY = int.Parse(row[QTY_COLUMN].ToString());
+                }
+                catch
+                {
+                    SN_Data.QTY = 1;
+                }
+            }
 
-                //Serial_Number serial = new Serial_Number();
+            Customer_Textbox.Text = SN_Data.Customer;
+            Assembly_Textbox.Text = SN_Data.Assembly;
+            Rev_Textbox.Text = SN_Data.Rev;
+            Pur_Order_Textbox.Text = SN_Data.PO;
 
-                //serial.Generate_Serial_Numbers(SN_Data.QTY);
+            Serial_Number serial = new Serial_Number();
+            serial.Generate_Serial_Numbers(SN_Data.QTY);
 
-                //Serial_Number_Finished_text_box.Text = SN_Data.Full_SN_Finish;
-                //Serial_Number_Start_text_box.Text = SN_Data.Full_SN_Start;
+            if (SN_Data.Customer_SN)
+            {
+                SN_Data.Prefix = null;
+                SN_Data.SN_Start = null;
+                SN_Data.SN_Finish = null;
 
-                // Create Dictionary
-                Dictionary<string, object> Sql_Parameters2 = new Dictionary<string, object>();
+                Prefix_TextBox.Text = null;
+                SN_TextBox.Text = null;
+                Suffix_TextBox.Text = null;
+                Suffix_TextBox.IsEnabled = true;
+            }
+            else
+            {
+                Prefix_TextBox.Text = SN_Data.Prefix;
+                SN_TextBox.Text = SN_Data.SN_Start;
+                Suffix_TextBox.Text = null;
+                Suffix_TextBox.IsEnabled = false;
+            }
 
-                // Add SQL Parameters Below
-                Sql_Parameters2.Add("@ID", SN_Data.ID.ToString());
+            // Create Dictionary
+            Dictionary<string, object> Sql_Parameters2 = new Dictionary<string, object>();
 
-                Sql_Query query2 = new Sql_Query();
-                DataTable dataTable2 = query2.Sql_Select(SQL_CONNECTION, CHECK_SN, Sql_Parameters2);
+            // Add SQL Parameters Below
+            Sql_Parameters2.Add("@ID", SN_Data.ID.ToString());
 
-                //int count = int.Parse(dataTable2.Rows[0][0].ToString());
+            Sql_Query query2 = new Sql_Query();
+            DataTable dataTable2 = query2.Sql_Select(SQL_CONNECTION, CHECK_SN, Sql_Parameters2);
 
-                //if (count > 0)
-                //{
-                //    numericUpDown1.Value = count;
-                //    numericUpDown1.Maximum = count;
-                //    ReprintButton.Enabled = true;
-                //}
-                //else if (count == 0)
-                //{
-                //    numericUpDown1.Value = 0;
-                //    numericUpDown1.Maximum = 0;
-                //    ReprintButton.Enabled = true;
-                //}
-                //else
-                //{
-                //    ReprintButton.Enabled = false;
-                //    numericUpDown1.Maximum = SN_Data.QTY;
-                //}
+            int count = int.Parse(dataTable2.Rows[0][0].ToString());
+
+            if (count > 0)
+            {
+                Qty_IntegerUpDown.Value = count;
+                Qty_IntegerUpDown.Maximum = count;
+                Qty_IntegerUpDown.IsEnabled = true;
+            }
+            else if (count == 0)
+            {
+                Qty_IntegerUpDown.Value = 0;
+                Qty_IntegerUpDown.Maximum = 0;
+                Qty_IntegerUpDown.IsEnabled = true;
+            }
+            else
+            {
+                Reprint_Button.IsEnabled = false;
+                Qty_IntegerUpDown.Maximum = SN_Data.QTY;
+                Qty_IntegerUpDown.Value = SN_Data.QTY;
             }
         }
 
@@ -172,6 +196,75 @@ namespace Serial_Number_Generator
             {
                 Lead_Free_Checkbox.IsChecked = true;
                 Lead_Free_Checkbox.IsChecked = true;
+            }
+        }
+
+        private void PAS_Serial_Num_Radio_Button_Checked(object sender, RoutedEventArgs e)
+        {
+            SN_Data.Customer_SN = false;
+            SN_Data.Prefix = null;
+            SN_Data.SN_Start = null;
+            SN_Data.SN_Finish = null;
+
+            Prefix_TextBox.Text = null;
+            SN_TextBox.Text = null;
+            Suffix_TextBox.Text = null;
+            Suffix_TextBox.IsEnabled = false;
+        }
+
+        private void Customer_Serial_Num_Radio_Button_Checked(object sender, RoutedEventArgs e)
+        {
+            SN_Data.Customer_SN = true;
+            Prefix_TextBox.Text = null;
+            SN_TextBox.Text = null;
+            Suffix_TextBox.Text = null;
+            Suffix_TextBox.IsEnabled = true;
+        }
+
+        private void Create_Button_Click(object sender, RoutedEventArgs e)
+        {
+            //Reset NumbericUpDown1
+            Qty_IntegerUpDown.Maximum = 99999;
+
+            // Create Dictionary
+            Dictionary<string, object> Sql_Parameters = new Dictionary<string, object>();
+
+            // Add SQL Parameters Below
+            Sql_Parameters.Add("@ID", SN_Data.ID.ToString());
+
+            Sql_Query query = new Sql_Query();
+            DataTable dataTable = query.Sql_Select(SQL_CONNECTION, CHECK_SN, Sql_Parameters);
+            int count = int.Parse(dataTable.Rows[0][0].ToString());
+
+            if (count == 0)
+            {
+                //Error_Form error_Form = new Error_Form();
+                //error_Form.Show();
+            }
+            else
+            {
+                // Create Dictionary
+                Dictionary<string, object> Sql_Parameters2 = new Dictionary<string, object>();
+
+                // Add SQL Parameters Below
+                Sql_Parameters2.Add("@ID", SN_Data.ID.ToString());
+
+                Sql_Parameters2.Add("@date_", (SN_Data.Date));
+                Sql_Parameters2.Add("@kit_id", (SN_Data.Kit_ID));
+                Sql_Parameters2.Add("@qty", (SN_Data.QTY));
+                Sql_Parameters2.Add("@sn_start", (SN_Data.SN_Start));
+                Sql_Parameters2.Add("@sn_finish", (SN_Data.SN_Finish));
+                Sql_Parameters2.Add("@week", (SN_Data.Week));
+                Sql_Parameters2.Add("@customer", (SN_Data.Customer));
+                Sql_Query query2 = new Sql_Query();
+
+                Serial_Number serial = new Serial_Number();
+                serial.Generate_Serial_Numbers(SN_Data.QTY, true);
+
+                query2.sql_data(SQL_CONNECTION, INSERT_SN_RANGE, Sql_Parameters2);
+
+                Label_Print traveler = new Label_Print();
+                traveler.print_traveler(false);
             }
         }
     }

@@ -12,7 +12,7 @@ namespace Serial_Number_Generator
             string sn_finish, int week, string rev, string customer, string assembly, string po,
             bool tin_lead, bool lead_free, bool halogen_free, bool no_clean, bool conformal_coated,
             bool class_three, string full_sn_finish, string full_sn_start, bool print_traveler, bool print_label,
-            bool customer_sn)
+            bool customer_sn, string prefix)
         {
             ID = id;
             Date = date;
@@ -36,6 +36,7 @@ namespace Serial_Number_Generator
             Print_Label = print_label;
             Print_Traveler = print_traveler;
             Customer_SN = customer_sn;
+            Prefix = prefix;
         }
 
         public static bool Print_Traveler { get; set; }
@@ -60,5 +61,6 @@ namespace Serial_Number_Generator
         public static string Full_SN_Finish { get; set; }
         public static string Full_SN_Start { get; set; }
         public static bool Customer_SN { get; set; }
+        public static string Prefix { get; set; }
     }
 }
